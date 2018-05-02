@@ -1,0 +1,29 @@
+<mat-card>
+  <form #predmetForm="ngForm" (ngSubmit)="save(predmetForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{predmet.naziv ? 'Izmeni' : 'Dodaj'}} predmet</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input type="hidden" name="href" [(ngModel)]="predmet.href">
+      <mat-form-field>
+        <input matInput placeholder="Naziv predmeta" [(ngModel)]="predmet.naziv"
+                required name="naziv" #name>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="Fond casova" [(ngModel)]="predmet.fondCasova"
+                  required name="fondCasova" (keypress)="keyPress($event)" #name>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!predmetForm.form.valid">Potvrdi</button>
+      <button mat-raised-button color="secondary" (click)="remove(predmet.href)"
+              *ngIf="predmet.href" type="button">Delete</button>
+      <a mat-button routerLink="/predmeti">Odustani</a>
+    </mat-card-actions>
+  </form>
+
+  <mat-error *ngIf="errorMessage">
+      <strong>{{errorMessage}}</strong> 
+  </mat-error>
+</mat-card>

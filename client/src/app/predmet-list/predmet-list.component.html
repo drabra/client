@@ -1,0 +1,30 @@
+<mat-card>  
+    <mat-error *ngIf="errorMessage">
+      <strong>{{errorMessage}}</strong> 
+    </mat-error>
+  
+    <mat-card>
+      <mat-card-header>PREDMETI</mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let predmet of predmeti">
+            <h3 mat-line>Naziv: <a mat-button [routerLink]="['/predmet-edit', predmet.idPredmet]"><strong><em>{{predmet.naziv}}</em></strong></a></h3>
+            <h3 mat-line>Fond casova: <strong><em>{{predmet.fondCasova}}</em></strong></h3>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card>
+      <mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="button"  [routerLink]="['/dodaj-predmet']">Dodaj predmet</button>
+        </mat-card-actions>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="button"  [routerLink]="['/ocene']">Ocene</button>
+        </mat-card-actions>
+      </mat-card-content>
+        
+    </mat-card>
+    
+  </mat-card>

@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="ID UCENIKA" [(ngModel)]="idUcenik" required name="idUcenik" #name>
+      </mat-form-field>
+      <mat-card-actions>
+          <button mat-raised-button color="primary" type="button" (click)="getUcenikoveOcene()">Prikazi</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-error *ngIf="errorMessage">
+    <strong>{{errorMessage}}</strong> 
+  </mat-error>
+
+  <mat-card>
+    <mat-card-header>UCENIKOVE OCENE</mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let ocena of ucenikoveOcene">
+          <h3 mat-line>Ocena: <strong><em>{{ocena.vrednost}}</em></strong></h3>
+          <h3 mat-line>Ime i prezime ucenika: <strong><em>{{ocena.ucenik.ime}} {{ocena.ucenik.prezime}}</em></strong></h3>
+          <h3 mat-line>Predmet: <strong><em>{{ocena.predaje.predmet.naziv}}</em></strong></h3>
+          <h3 mat-line>Nastavnik: <strong><em>{{ocena.predaje.nastavnik.ime}} {{ocena.predaje.nastavnik.prezime}}</em></strong></h3>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="primary" type="button"  [routerLink]="['/predmeti']">Predmeti</button>
+      </mat-card-actions>
+    </mat-card-content>
+      
+  </mat-card>
+    
+</mat-card>
